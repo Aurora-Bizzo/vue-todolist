@@ -7,3 +7,16 @@
 body {
     font-size: 25px;
 }
+
+.btn-size {
+    width: 45px;
+    height: 45px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.checked {
+    background-color: green;
+}

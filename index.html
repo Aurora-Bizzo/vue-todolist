@@ -24,10 +24,27 @@
                 <div class="col-12">
                     <div class="p-3 border border-secondary rounded-5">
                         <ol>
-                            <li class="m-3" v-for="item in toDoList">
-                                {{ item }}
+                            <li class="m-3" v-for="(item, index) in toDoList">
+                                <div class="d-flex justify-content-between">
+                                    <div :class="item.done ? 'completed' : ''">
+                                        {{ item.text }}
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-warning btn-size me-3 fs-5 text-white" @click="checkTask(index)" v-if="!item.done"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-success btn-size me-3 fs-5 text-white" @click="checkTask(index)" v-else="item.done"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-danger btn-size" @click="deleteTask(index)"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
                             </li>
                         </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex w-100 mt-4 justify-content-evenly">
+                        <input id="myInput" class="form-control-lg border border-secondary rounded-5 w-75" placeholder="Aggiungi alla lista" v-model="newTask" @keyup.enter="addTask">
+                        <button id="myBtn" class="btn btn-primary rounded-5 fs-5" @click="addTask">Aggiungi</button>
                     </div>
                 </div>
             </div>
